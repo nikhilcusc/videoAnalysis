@@ -9,6 +9,13 @@ changed frames, export the results, and inspect the output interactively.
 
 ![Car moving through the video](sample_output/rank_01_frame_002558_changes_4729.jpg)
 
+## YOLO Detections
+
+The YOLO-based scripts correctly identified a person on a bicycle in the sample
+frame below.
+
+![YOLO detections](sample_output/yolo_detections.png)
+
 ## `video_analyzer.py`
 
 The script scans a video frame by frame, compares each frame against the
@@ -47,3 +54,12 @@ environment.
 
 The workflow produces CSV summaries and saved frame images for the highest
 change-score frames.
+
+
+## Common Failure Cases
+
+- Strong camera motion can dominate the pixel-difference score and create false positives.
+- Motion blur can hide small objects or reduce IoU overlap between adjacent frames.
+- Low light and noise can raise the difference mask even when the scene is stable.
+- YOLO may miss distant or partially occluded objects, especially in motion-heavy frames.
+- Simple IoU matching can misassociate objects when boxes overlap heavily or objects cross paths.
