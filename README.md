@@ -1,22 +1,40 @@
 # Video Analysis
 
+## Motivation
+
+Do you have an old dashcam? 
+I had one and set it up recording out window all day. But I had no time to scrub through hours of mundane footage? 
+So, I built this tool to solve exactly that problem. 
+
+Whether you're trying to figure out *exactly* when a package was delivered today, or need to find the specific moment someone keyed your car parked out front, reviewing an entire day's video manually is tedious and impractical. 
+
+This program automates the review process. It scans through your video files, analyzes frame-by-frame pixel changes, and runs YOLO object detection. It then produces a timeline graph identifying **what** appeared in the video and **when** (e.g., "Detected: car, bicycle, person"). Instead of watching 24 hours of empty streets, you can skip directly to the "interesting" frames and find your events in seconds.
+
+![Analysis Graph Example](sample_output/graph_detections_timestamps.png)
+
+*(Example: A timeline plotting timestamp vs. change score, highlighting exact moments objects were detected.)*
+
+## Overview
+
 This workspace currently centers on a small frame-change workflow built around
 `video_analyzer.py` and the companion notebook `video_analyzer_test.ipynb`.
 Together they let you identify the car moving through the video, rank the most
 changed frames, export the results, and inspect the output interactively.
 
-## Example Output
+### Intermediate output
 
 ![Car moving through the video](sample_output/rank_01_frame_002558_changes_4729.jpg)
 
-## YOLO Detections
+*Car moving through the video*
 
-The YOLO-based scripts correctly identified a person on a bicycle in the sample
+### YOLO Detections
+
+The YOLO-based scripts correctly identified a bicycle in the sample
 frame below.
 
 ![YOLO detections](sample_output/yolo_detections.png)
 
-## `video_analyzer.py`
+### `video_analyzer.py` and `dashcam_change_analysis.py`
 
 The script scans a video frame by frame, compares each frame against the
 previous one, and ranks frames by the number of changed pixels so the moving
@@ -29,7 +47,7 @@ It provides helpers to:
 - export the selected results to CSV
 - save the selected frames as images
 
-## `video_analyzer_test.ipynb`
+### `video_analyzer_test.ipynb` and `validate_dashcam_change_analysis.py`
 
 The notebook is the interactive validation path for the same workflow. It is
 useful when you want to explore the change-detection results, inspect the
