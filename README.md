@@ -2,13 +2,11 @@
 
 ## Motivation
 
-Do you have an old dashcam? 
-I had one and set it up recording out window all day. But I had no time to scrub through hours of mundane footage? 
-So, I built this tool to solve exactly that problem. 
+Have an old dashcam collecting hours of footage? Mine was pointed out a front window, quietly recording all day. The problem wasn't capturing events—it was finding them.
 
-Whether you're trying to figure out *exactly* when a package was delivered today, or need to find the specific moment someone keyed your car parked out front, reviewing an entire day's video manually is tedious and impractical. 
+Whether you're checking when a package arrived, identifying the exact moment someone approached your car, spotting unusual activity overnight, or simply reviewing traffic outside your home, manually scrubbing through hours of mostly uneventful video is slow and frustrating.
 
-This program automates the review process. It scans through your video files, analyzes frame-by-frame pixel changes, and runs YOLO object detection. It then produces a timeline graph identifying **what** appeared in the video and **when** (e.g., "Detected: car, bicycle, person"). Instead of watching 24 hours of empty streets, you can skip directly to the "interesting" frames and find your events in seconds.
+This project turns that process into an automated search. It scans video for significant scene changes, uses YOLO object detection to identify what appears in each event, and generates a timeline showing **when** something happened and **what** was detected (for example: *person*, *car*, *bicycle*, or *dog*). Instead of watching an entire day's recording, you can jump directly to the moments that matter.
 
 ![Analysis Graph Example](sample_output/graph_detections_timestamps.png)
 
@@ -34,45 +32,82 @@ frame below.
 
 ![YOLO detections](sample_output/yolo_detections.png)
 
-### `video_analyzer.py` and `dashcam_change_analysis.py`
+### Main Features
 
-The script scans a video frame by frame, compares each frame against the
-previous one, and ranks frames by the number of changed pixels so the moving
-car stands out in the results.
+- Detect significant scene changes using pixel differencing
+- Rank the most interesting frames
+- Detect objects using YOLO
+- Associate timestamps with detected objects
+- Export results to CSV
+- Optionally save annotated images showing detections
 
-It provides helpers to:
+## Environment Setup
 
-- find the top changed frames
-- export frame-change counts to CSV
-- export the selected results to CSV
-- save the selected frames as images
+### 1. Clone the repository
 
-### `video_analyzer_test.ipynb` and `validate_dashcam_change_analysis.py`
+```bash
+git clone <repository-url>
+cd <repository-directory>
+```
 
-The notebook is the interactive validation path for the same workflow. It is
-useful when you want to explore the change-detection results, inspect the
-derived data in pandas, and visualize the moving car across the most changed
-frames.
+### 2. Create a virtual environment
 
-## Setup
+**Windows**
 
-Install the Python dependencies used by the script and notebook environment.
-For local development, make sure the packages required for OpenCV, NumPy,
-Matplotlib, pandas, Jupyter, and video analysis are available in your Python
-environment.
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+```
+
+**Linux / macOS**
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+### 3. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+If you are developing or using the notebooks, install Jupyter if it is not already included:
+
+```bash
+pip install notebook ipykernel
+```
 
 ## Typical Workflow
 
-1. Load a video into the analyzer.
-2. Run the frame-change ranking logic.
-3. Export the counts or top results if needed.
-4. Open the notebook to inspect the results visually.
+1. Load a dashcam video.
+2. Compute frame-change scores.
+3. Identify the most significant events.
+4. Run YOLO object detection.
+5. Export timestamps and detected objects to a CSV.
+6. Optionally save annotated images for visual verification.
+
+## Command Line
+
+Run the complete pipeline:
+
+```bash
+python .\run_dashcam_autowatch.py --video-path {video file path}
+```
+Example: python .\run_dashcam_autowatch.py --video-path 12Feb2022/VID_003.MOV
+
+
+The script writes a CSV to the `output/` directory containing timestamps, frame numbers, change scores, and detected objects. When `--save-annotated` is specified, annotated frames are written to `output/dashcam_change_analysis/`.
 
 ## Output
 
-The workflow produces CSV summaries and saved frame images for the highest
-change-score frames.
+The pipeline can generate:
 
+- CSV summaries of detected events
+- Event timestamps
+- YOLO object labels
+- Frame change scores
+- Annotated frame images
 
 ## Common Failure Cases
 
