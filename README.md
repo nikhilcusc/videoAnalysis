@@ -6,7 +6,7 @@ Have an old dashcam collecting hours of footage? Mine was pointed out a front wi
 
 Whether you're checking when a package arrived, identifying the exact moment someone approached your car, spotting unusual activity overnight, or simply reviewing traffic outside your home, manually scrubbing through hours of mostly uneventful video is slow and frustrating.
 
-This project turns that process into an automated search. It scans video for significant scene changes, uses YOLO object detection to identify what appears in each event, and generates a timeline showing **when** something happened and **what** was detected (for example: *person*, *car*, *bicycle*, or *dog*). Instead of watching an entire day's recording, you can jump directly to the moments that matter.
+This project turns that process into an automated search. It scans video for significant scene changes, uses YOLO object detection to identify what appears in each event, and generates a timeline showing **when** something happened and **what** was detected (for example: *person*, *car*, *bicycle*, or *dog*). That makes it useful for surveillance, retail analytics, warehouse monitoring, traffic monitoring, parking analytics, and security systems, where you want to jump directly to the moments that matter instead of watching an entire day's recording.
 
 ![Analysis Graph Example](sample_output/graph_detections_timestamps.png)
 
