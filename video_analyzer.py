@@ -4,12 +4,9 @@ import csv
 import heapq
 from pathlib import Path
 from typing import Iterable
-
 import cv2
 
-
 ResultTuple = tuple[int, int, float]
-
 
 def find_top_changed_frames(
     video_path: str,

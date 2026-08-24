@@ -1,6 +1,10 @@
+# Requires Python >= 3.10
 opencv-python
 numpy
 ultralytics
 matplotlib
 pandas
 jupyter
+streamlit
+plotly
+altair<5
