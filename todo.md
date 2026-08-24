@@ -1,7 +1,7 @@
 # Video Analysis TODO
 
-## Gradio UI
-- [ ] Build a Gradio app for the existing dashcam analysis pipeline.
+## Streamlit UI
+- [ ] Build a Streamlit app for the existing dashcam analysis pipeline.
 - [ ] Add inputs for video upload/path, sampling settings, thresholds, output directory, and annotated-image toggle.
 - [ ] Display the top changed frames, detection summary, and generated CSV path in the UI.
 

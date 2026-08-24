@@ -12,7 +12,6 @@ from dashcam_change_analysis import (
     summarize_result,
 )
 
-
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Run dashcam frame-change and object-transition analysis."
@@ -26,7 +25,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--model",
         dest="model_name_or_path",
-        default="yolov8n.pt",
+        default="./models/yolov8n.pt",
         help="Ultralytics model name or local weights path.",
     )
     parser.add_argument(
@@ -89,7 +88,6 @@ def build_parser() -> argparse.ArgumentParser:
         help="Save annotated frames for the top changed results.",
     )
     return parser
-
 
 def write_summary_csv(summary, csv_path: Path) -> Path:
     csv_path.parent.mkdir(parents=True, exist_ok=True)
