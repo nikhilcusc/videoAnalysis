@@ -132,8 +132,8 @@ def _render_result(result: dict[str, Any], detections: list[Any], entered: list[
 
 
 def main() -> None:
-    st.set_page_config(page_title="Dashcam Change Analysis", page_icon="🎥", layout="wide")
-    st.title("Dashcam Change Analysis")
+    st.set_page_config(page_title="Dashcam Video watcher", page_icon="🎥", layout="wide")
+    st.title("Dashcam Video watcher")
     st.caption("Pixel-change peaks with YOLO object transitions")
 
     with st.sidebar:
