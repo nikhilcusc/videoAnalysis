@@ -1,4 +1,10 @@
-# Video Analysis
+# Dashcam Auto-Watcher: Automated Video Analysis
+
+![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)
+![OpenCV](https://img.shields.io/badge/OpenCV-Image_Processing-green.svg)
+![YOLO](https://img.shields.io/badge/YOLO-Object_Detection-orange.svg)
+
+**Live Demo:** [autovidwatch.streamlit.app](https://autovidwatch.streamlit.app/)
 
 ## Motivation
 
@@ -46,8 +52,8 @@ frame below.
 ### 1. Clone the repository
 
 ```bash
-git clone <repository-url>
-cd <repository-directory>
+git clone https://github.com/nikhilcusc/videoAnalysis.git
+cd videoAnalysis
 ```
 
 ### 2. Create a virtual environment
@@ -101,13 +107,10 @@ The script writes a CSV to the `output/` directory containing timestamps, frame 
 
 ## Output
 
-The pipeline can generate:
+The pipeline generates the following files in your workspace:
 
-- CSV summaries of detected events
-- Event timestamps
-- YOLO object labels
-- Frame change scores
-- Annotated frame images
+- **CSV Event Summary** (in `output/`): A spreadsheet containing timestamps, frame numbers, frame change scores, and detected YOLO object labels for all identified events.
+- **Annotated Frames** (`output/dashcam_change_analysis/`): A directory containing `.jpg` images of the events with YOLO bounding boxes drawn (generated only when the `--save-annotated` flag is used).
 
 ## Common Failure Cases
 
