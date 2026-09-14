@@ -26,10 +26,9 @@ from dashcam_change_analysis import (
 
 EXAMPLE_VIDEOS = sorted(Path("exampleVids").glob("*.mp4"))
 MODEL_OPTIONS = {
-    "YOLOv8 nano (local)": "models/yolov8n.pt",
-    "YOLO11 small (local)": "models/yolo11s.pt",
-    "YOLO26 nano (local)": "models/yolo26n.pt",
-    "YOLOv8 nano (Ultralytics download)": "yolov8n.pt",
+    "YOLOv8 nano": "models/yolov8n.pt",
+    "YOLO11 small": "models/yolo11s.pt",
+    "YOLO26 nano": "models/yolo26n.pt",
 }
 
 
@@ -132,9 +131,9 @@ def _render_result(result: dict[str, Any], detections: list[Any], entered: list[
 
 
 def main() -> None:
-    st.set_page_config(page_title="Dashcam Change Analysis", page_icon="🎥", layout="wide")
-    st.title("Dashcam Change Analysis")
-    st.caption("Pixel-change peaks with YOLO object transitions")
+    st.set_page_config(page_title="Dashcam Auto Video watcher", page_icon="🎥", layout="wide")
+    st.title("Dashcam Auto Video watcher")
+    st.caption("Change detection with YOLO object detection")
 
     with st.sidebar:
         st.header("Video")

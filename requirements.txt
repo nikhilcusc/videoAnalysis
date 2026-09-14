@@ -1,8 +1,8 @@
 # Requires Python >= 3.10
-opencv-python
+opencv-python-headless
 numpy
 ultralytics
-matplotlib
+matplotlib  
 pandas
 jupyter
 streamlit
